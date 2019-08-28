@@ -5,14 +5,11 @@
     <vendor email="boysijunhui@163.com" url="http://www.chushou.com">触手直播</vendor>
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      触手配置中心插件，用于快速生成数据库、RPC 等配置信息。<br>
     ]]></description>
 
-    <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
-    ]]>
+    <change-notes>
+        <![CDATA[]]>
     </change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
@@ -30,11 +27,17 @@
 
     <actions>
         <!-- Add your actions here -->
-        <group id="JellyfishPlugins.projectGroup" text="create project">
-            <add-to-group group-id="ToolsMenu" anchor="last"/>
-            <action id="projectGroup.TextBoxes" class="com.kascend.idea.jellyfish.config.action.TextBoxes" text="输入demo" />
-            <action id="projectGroup.TextBoxes2" class="com.kascend.idea.jellyfish.config.action.TextBoxes2" text="输入demo2" />
-        </group>
+        <action id="ProjectFormatAction" class="com.kascend.idea.jellyfish.config.action.ProjectFormatAction"
+                text="ProjectFormatAction">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
     </actions>
+
+    <application-components>
+        <!-- Add your application components here -->
+        <component>
+            <implementation-class>com.kascend.idea.jellyfish.config.JellyfishConfigPluginRegistration</implementation-class>
+        </component>
+    </application-components>
 
 </idea-plugin>
