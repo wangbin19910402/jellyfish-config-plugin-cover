@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- MySQL 数据库连接池配置 -->
+    <bean id="$dataSourceBeanName" class="com.heimuheimu.mysql.jdbc.datasource.spring.MysqlDataSourceFactory"
+          destroy-method="close">
+        <constructor-arg index="0">
+            <bean class="com.heimuheimu.mysql.jdbc.ConnectionConfiguration"> <!-- 数据库连接使用的配置信息 -->
+                <constructor-arg index="0" value="({$dbPropertyPrefix.jdbc.url})"/>
+                <constructor-arg index="1" value="({$dbPropertyPrefix.jdbc.user})"/>
+                <constructor-arg index="2" value="({$dbPropertyPrefix.jdbc.password})"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg index="1" ref="dataSourceConfiguration"/> <!-- 连接池配置信息 -->
+        <constructor-arg index="2" ref="noticeableMysqlDataSourceListener"/> <!-- 连接池事件监听器 -->
+    </bean>
+
+    <bean id="$sqlSessionFactoryBeanName" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="$sqlMapClientBeanName"/>
+        <property name="configLocation" value="classpath:sqlmaps/$dbName/sqlMapConfig.xml"/>
+    </bean>
+
+    <bean id="$sqlSessionTemplateBeanName" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="$sqlSessionFactoryBeanName"/>
+    </bean>
+</beans>

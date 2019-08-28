@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- 在 MySQL 连接不可用或恢复时进行实时通知，线程安全，多个数据库连接池可共用此监听器 -->
+    <bean id="noticeableMysqlDataSourceListener"
+          class="com.heimuheimu.mysql.jdbc.datasource.listener.NoticeableMysqlDataSourceListener">
+        <constructor-arg index="0" value="$yourProjectName"/> <!-- 当前项目名称 -->
+        <constructor-arg index="1" ref="notifierList"/> <!-- 报警器列表，报警器的信息可查看 naivemonitor 项目 -->
+    </bean>
+
+    <!-- MySQL 数据库连接池配置信息，线程安全，多个数据库连接池可共用此配置 -->
+    <bean id="dataSourceConfiguration" class="com.heimuheimu.mysql.jdbc.datasource.DataSourceConfiguration">
+        <constructor-arg index="0" value="20"/> <!-- 连接池大小，可结合监控数据 "连接池被使用的最大连接数量" 进行设置 -->
+        <constructor-arg index="1" value="3000"/> <!-- 从连接池获取连接的超时时间，单位：毫秒，建议 3 秒 -->
+        <constructor-arg index="2" value="10000"/> <!-- 连接最大占用时间，单位：毫秒，建议 10 秒 -->
+        <constructor-arg index="3" value="5000"/> <!-- SQL 执行超时时间，单位：毫秒，建议 5 秒 -->
+        <constructor-arg index="4" value="200"/> <!-- 执行 SQL 过慢最小时间，单位：毫秒，建议 200 毫秒-->
+    </bean>
+</beans>
