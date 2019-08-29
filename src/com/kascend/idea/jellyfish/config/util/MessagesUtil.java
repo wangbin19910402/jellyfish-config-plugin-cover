@@ -82,7 +82,7 @@ public class MessagesUtil {
      * @return 所有项目的相对路径
      */
     private static String[] getValidProjectNames(Project project) {
-        String projectBasePath = project.getBasePath();
+        String projectBasePath = project.getBasePath();//项目绝对路径
         File projectDir = new File(projectBasePath);
         ArrayList<String> validProjectNames = new ArrayList<>();
         if (isValidProject(projectDir)) {
@@ -90,7 +90,7 @@ public class MessagesUtil {
         }
         for (File file : projectDir.listFiles()) {
             if (isValidProject(file)) {
-                validProjectNames.add(projectDir.getName() + "/" + file.getName());
+                validProjectNames.add(projectDir.getName() + "/" + file.getName());// 相对地址，例jellyfish/jellfish-console
             }
         }
         Collections.sort(validProjectNames);
@@ -105,14 +105,14 @@ public class MessagesUtil {
      */
     private static boolean isValidProject(File file) {
         if (file.isDirectory()) {
-            File[] targetFiles = file.listFiles(pathname -> {
+            File[] targetFiles = file.listFiles(pathname -> {// 文件筛选器
                 if (pathname.isFile() && pathname.getName().equals("pom.xml")) {
-                    return true;
+                    return true;//
                 } else {
                     return false;
                 }
             });
-            return targetFiles != null && targetFiles.length == 1;
+            return targetFiles != null && targetFiles.length == 1;// 筛选出下面有pom.xml的文件夹
         }
         return false;
     }

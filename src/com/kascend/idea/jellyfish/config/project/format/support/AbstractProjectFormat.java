@@ -100,7 +100,7 @@ public abstract class AbstractProjectFormat implements ProjectFormat {
         }
 
         String environmentJavaFilePath = projectBasePath + "/src/main/java/" + packageName.replace(".", "/") + "/environment/EnvironmentDetector.java";
-        ConfigFileGenerator.generate("/project/resources/EnvironmentDetector.code", variablesMap, environmentJavaFilePath, true);
+        ConfigFileGenerator.generate("/project/resources/EnvironmentDetector.java", variablesMap, environmentJavaFilePath, true);
     }
 
     /**
@@ -132,10 +132,10 @@ public abstract class AbstractProjectFormat implements ProjectFormat {
         new File(velocityDirectoryPath).mkdirs();
 
         String responseJavaFilePath = projectBasePath + "/src/main/java/" + packageName.replace(".", "/") + "/web/Response.java";
-        ConfigFileGenerator.generate("/project/web/Response.code", variablesMap, responseJavaFilePath, true);
+        ConfigFileGenerator.generate("/project/web/Response.java", variablesMap, responseJavaFilePath, true);
 
         String webConfigJavaFilePath = projectBasePath + "/src/main/java/" + packageName.replace(".", "/") + "/web/WebConfig.java";
-        ConfigFileGenerator.generate("/project/web/WebConfig.code", variablesMap, webConfigJavaFilePath, true);
+        ConfigFileGenerator.generate("/project/web/WebConfig.java", variablesMap, webConfigJavaFilePath, true);
 
         String controllerJavaDirectoryPath = projectBasePath + "/src/main/java/" + packageName.replace(".", "/") + "/web/controller";
         new File(controllerJavaDirectoryPath).mkdirs();

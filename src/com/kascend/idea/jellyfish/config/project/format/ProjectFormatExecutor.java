@@ -9,7 +9,7 @@ public class ProjectFormatExecutor {
     private static final ServerProjectFormat SERVER_PROJECT_FORMAT = new ServerProjectFormat();
 
     private static final ConsoleProjectFormat CONSOLE_PROJECT_FORMAT = new ConsoleProjectFormat();
-
+    // projectBasePath module绝对路径；projectType：项目类型
     public static boolean format(String projectBasePath, ProjectEnum projectType) throws Exception {
         return getProjectFormat(projectType).format(projectBasePath);
     }

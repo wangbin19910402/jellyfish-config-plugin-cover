@@ -4,9 +4,11 @@
     <version>1.0</version>
     <vendor email="boysijunhui@163.com" url="http://www.chushou.com">触手直播</vendor>
 
-    <description><![CDATA[
+    <description>
+        <![CDATA[
       触手配置中心插件，用于快速生成数据库、RPC 等配置信息。<br>
-    ]]></description>
+    ]]>
+    </description>
 
     <change-notes>
         <![CDATA[]]>

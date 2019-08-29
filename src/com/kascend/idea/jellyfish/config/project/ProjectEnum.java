@@ -2,11 +2,19 @@ package com.kascend.idea.jellyfish.config.project;
 
 /**
  * 项目类型枚举
+ *
+ * @author junhui.si
  */
 public enum ProjectEnum {
 
+    /**
+     * server项目
+     */
     SERVER_WEB("Server Web"),
 
+    /**
+     * console项目
+     */
     CONSOLE_WEB("console Web");
 
     private final String displayName;

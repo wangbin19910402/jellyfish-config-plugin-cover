@@ -40,6 +40,7 @@ public class ProjectFormatAction extends AnAction {
                 return;
             }
 
+            // module 绝对地址
             String projectBasePath = MessagesUtil.getProjectBasePath(project, selectedProjectName);
             String generateConfirmMessage = "项目路径：" + projectBasePath;
             generateConfirmMessage += "\r\n项目类型：" + selectedProjectFormatName;

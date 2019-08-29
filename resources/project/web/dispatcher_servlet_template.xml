@@ -13,11 +13,11 @@
         <property name="requestContextAttribute" value="requestContext"/>
     </bean>
 
-    <!--freeMarker configurer-->
-    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+    <!--FreeMarker 配置-->
+    <bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/freemarker/"/>
-        <property name="freemarkerSettings" value="/WEB-INF/freemarker.properties"/>
-
+        <!-- 配置FreeMarker属性文件路径 -->
+        <property name="configLocation" value="/WEB-INF/freemarker.properties"/>
         <property name="freemarkerVariables">
             <map>
                 <entry key="xml_escape" value-ref="fmXmlEscape"/>
