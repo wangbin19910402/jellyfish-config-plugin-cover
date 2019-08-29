@@ -24,6 +24,14 @@ import org.xml.sax.SAXException;
  */
 public class PomUtil {
 
+    /**
+     * 添加依赖
+     *
+     * @param projectBasePath
+     * @param comment
+     * @param dependencyArtifactInfoArray
+     * @throws Exception
+     */
     public static void addDependency(String projectBasePath, String comment, ArtifactInfo... dependencyArtifactInfoArray) throws Exception {
         if (dependencyArtifactInfoArray.length > 0) {
             LinkedHashMap<String, ArtifactInfo> dependencyInfoMap = new LinkedHashMap<>();
@@ -199,9 +207,8 @@ public class PomUtil {
      *
      * @param artifactInfoGroup pom文件依赖结构对象
      * @return xml字符串
-     * @throws Exception
      */
-    public static String getArtifactInfoValue(ArtifactInfoGroup artifactInfoGroup) throws Exception {
+    public static String getArtifactInfoValue(ArtifactInfoGroup artifactInfoGroup) {
         StringBuilder buffer = new StringBuilder();
         ArtifactInfo parent = artifactInfoGroup.getParent();
         String lineSeparator = System.lineSeparator();

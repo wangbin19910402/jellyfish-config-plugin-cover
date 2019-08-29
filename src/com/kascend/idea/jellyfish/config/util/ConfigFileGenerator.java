@@ -44,7 +44,7 @@ public class ConfigFileGenerator {
      * @throws IOException
      * @throws URISyntaxException
      */
-    public static void generate(String templateFilePath, Map<String, String> variablesMap, String targetFilePath, boolean isOverride) throws IOException, URISyntaxException {
+    public static void generate(String templateFilePath, Map<String, String> variablesMap, String targetFilePath, boolean isOverride) throws IOException {
         File targetFile = new File(targetFilePath);
         boolean isTargetFileExist = targetFile.exists();
         // 不覆盖文件

@@ -57,9 +57,17 @@ public abstract class AbstractProjectFormat implements ProjectFormat {
      */
     protected abstract String getPomTemplatePath();
 
+    /**
+     * 不同类型的项目创建不同的资源
+     *
+     * @param projectBasePath 项目绝对路径
+     * @param packageName     项目包名
+     * @param projectName     项目名
+     * @throws Exception
+     */
     protected abstract void buildSpecificResources(String projectBasePath, String packageName, String projectName) throws Exception;
 
-    protected boolean needBuildResources() {
+    boolean needBuildResources() {
         return true;
     }
 

@@ -3,12 +3,16 @@ package com.kascend.idea.jellyfish.config.util;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.InputValidator;
 import com.intellij.openapi.ui.Messages;
 import com.kascend.idea.jellyfish.config.constant.JellyfishConfigPluginConstant;
 
+/**
+ * @author junhui.si
+ */
 public class MessagesUtil {
 
     /**
@@ -32,10 +36,11 @@ public class MessagesUtil {
 
     /**
      * 选项
-     * @param title
-     * @param message
-     * @param values
-     * @return
+     *
+     * @param title   对话框标题
+     * @param message 对话框提示
+     * @param values  对话框选择值
+     * @return 选择的选项
      */
     public static String getSelectedValue(String title, String message, String[] values) {
         String selectedValue = Messages.showEditableChooseDialog(message, title,
@@ -82,15 +87,18 @@ public class MessagesUtil {
      * @return 所有项目的相对路径
      */
     private static String[] getValidProjectNames(Project project) {
-        String projectBasePath = project.getBasePath();//项目绝对路径
+        // 项目绝对路径
+        String projectBasePath = project.getBasePath();
+        assert projectBasePath != null;
         File projectDir = new File(projectBasePath);
         ArrayList<String> validProjectNames = new ArrayList<>();
         if (isValidProject(projectDir)) {
             validProjectNames.add(projectDir.getName());
         }
-        for (File file : projectDir.listFiles()) {
+        for (File file : Objects.requireNonNull(projectDir.listFiles())) {
             if (isValidProject(file)) {
-                validProjectNames.add(projectDir.getName() + "/" + file.getName());// 相对地址，例jellyfish/jellfish-console
+                // 相对地址，例jellyfish/jellfish-console
+                validProjectNames.add(projectDir.getName() + "/" + file.getName());
             }
         }
         Collections.sort(validProjectNames);
@@ -105,14 +113,15 @@ public class MessagesUtil {
      */
     private static boolean isValidProject(File file) {
         if (file.isDirectory()) {
-            File[] targetFiles = file.listFiles(pathname -> {// 文件筛选器
-                if (pathname.isFile() && pathname.getName().equals("pom.xml")) {
-                    return true;//
+            // 文件筛选器，筛选出下面有pom.xml的文件夹
+            File[] targetFiles = file.listFiles(pathname -> {
+                if (pathname.isFile() && "pom.xml".equals(pathname.getName())) {
+                    return true;
                 } else {
                     return false;
                 }
             });
-            return targetFiles != null && targetFiles.length == 1;// 筛选出下面有pom.xml的文件夹
+            return targetFiles != null && targetFiles.length == 1;
         }
         return false;
     }

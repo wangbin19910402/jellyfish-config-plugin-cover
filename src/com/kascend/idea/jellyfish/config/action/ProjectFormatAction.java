@@ -10,7 +10,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.kascend.idea.jellyfish.config.constant.JellyfishConfigPluginConstant;
 import com.kascend.idea.jellyfish.config.project.ProjectEnum;
-import com.kascend.idea.jellyfish.config.project.format.ProjectFormatExecutor;
+import com.kascend.idea.jellyfish.config.project.format.ProjectFormatGenerator;
 import com.kascend.idea.jellyfish.config.util.MessagesUtil;
 
 /**
@@ -45,7 +45,7 @@ public class ProjectFormatAction extends AnAction {
             String generateConfirmMessage = "项目路径：" + projectBasePath;
             generateConfirmMessage += "\r\n项目类型：" + selectedProjectFormatName;
             if (MessagesUtil.confirm(project, "是否初始化该项目？", generateConfirmMessage)) {
-                boolean isSuccess = ProjectFormatExecutor.format(projectBasePath, ProjectEnum.toProjectFormatEnum(selectedProjectFormatName));
+                boolean isSuccess = ProjectFormatGenerator.format(projectBasePath, ProjectEnum.toProjectFormatEnum(selectedProjectFormatName));
                 if (isSuccess) {
                     Messages.showMessageDialog(project, "`" + selectedProjectFormatName + "` 项目初始化成功。", "项目初始化成功", JellyfishConfigPluginConstant.ICON_JELLYFISH_32);
                 } else {
