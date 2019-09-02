@@ -11,6 +11,8 @@ import com.intellij.openapi.ui.Messages;
 import com.kascend.idea.jellyfish.config.constant.JellyfishConfigPluginConstant;
 
 /**
+ * idea对话框工具
+ *
  * @author junhui.si
  */
 public class MessagesUtil {
@@ -67,11 +69,26 @@ public class MessagesUtil {
         }
     }
 
+    /**
+     * 确认对话框
+     *
+     * @param project 项目
+     * @param title   对话框标题
+     * @param message 对话框提示
+     * @return true-同意；false-不同意。
+     */
     public static boolean confirm(Project project, String title, String message) {
         int response = Messages.showOkCancelDialog(project, message, title, "YES", "NO", JellyfishConfigPluginConstant.ICON_JELLYFISH_32);
         return response == Messages.OK;
     }
 
+    /**
+     * 获取项目根路径（绝对路径）
+     *
+     * @param project     项目
+     * @param projectName 项目名
+     * @return 项目根路径（绝对路径）
+     */
     public static String getProjectBasePath(Project project, String projectName) {
         if (projectName.contains("/")) {
             return project.getBasePath() + projectName.substring(projectName.indexOf("/"));

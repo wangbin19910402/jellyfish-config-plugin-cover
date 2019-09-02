@@ -83,6 +83,14 @@ public abstract class AbstractProjectFormat implements ProjectFormat {
         packageDirectory.mkdirs();
     }
 
+    /**
+     * 创建资源文件
+     *
+     * @param projectBasePath 项目绝对路径
+     * @param packageName     项目包名
+     * @param projectName     项目名
+     * @throws Exception
+     */
     private void buildResources(String projectBasePath, String packageName, String projectName) throws Exception {
         String commonFilePath = projectBasePath + "/src/main/resources/common/context/common.xml";
         HashMap<String, String> variablesMap = new HashMap<>(4);
@@ -94,6 +102,7 @@ public abstract class AbstractProjectFormat implements ProjectFormat {
         String naiveNotifierPath = projectBasePath + "/src/main/resources/common/context/naive-notifier.xml";
         ConfigFileGenerator.generate("/project/resources/naive_notifier_template.xml", variablesMap, naiveNotifierPath, true);
 
+        // log 配置文件
         String log4jPath = projectBasePath + "/src/main/resources/common/log4j.properties";
         ConfigFileGenerator.generate("/project/resources/log4j_template.properties", variablesMap, log4jPath, true);
 

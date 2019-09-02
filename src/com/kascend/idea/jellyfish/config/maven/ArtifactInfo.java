@@ -22,6 +22,15 @@ public class ArtifactInfo {
      */
     private String version = "";
 
+    public ArtifactInfo() {
+    }
+
+    public ArtifactInfo(String groupId, String artifactId, String version) {
+        this.groupId = groupId;
+        this.artifactId = artifactId;
+        this.version = version;
+    }
+
     public String getGroupId() {
         return groupId;
     }

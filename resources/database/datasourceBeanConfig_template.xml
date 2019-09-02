@@ -14,7 +14,7 @@
                 <constructor-arg index="2" value="({$dbPropertyPrefix.jdbc.password})"/>
             </bean>
         </constructor-arg>
-        <constructor-arg index="1" ref="dataSourceConfiguration"/> <!-- 连接池配置信息 -->
+        <constructor-arg index="1" ref="$dataSourceConfiguration"/> <!-- 连接池配置信息 -->
         <constructor-arg index="2" ref="noticeableMysqlDataSourceListener"/> <!-- 连接池事件监听器 -->
     </bean>
 

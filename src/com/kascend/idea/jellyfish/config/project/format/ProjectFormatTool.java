@@ -9,7 +9,7 @@ import com.kascend.idea.jellyfish.config.project.format.support.ServerProjectFor
  *
  * @author junhui.si
  */
-public class ProjectFormatGenerator {
+public class ProjectFormatTool {
 
     private static final ServerProjectFormat SERVER_PROJECT_FORMAT = new ServerProjectFormat();
 

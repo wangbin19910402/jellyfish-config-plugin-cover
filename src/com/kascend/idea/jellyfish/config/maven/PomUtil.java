@@ -27,9 +27,9 @@ public class PomUtil {
     /**
      * 添加依赖
      *
-     * @param projectBasePath
-     * @param comment
-     * @param dependencyArtifactInfoArray
+     * @param projectBasePath             module绝对路径
+     * @param comment                     注释
+     * @param dependencyArtifactInfoArray 依赖列表
      * @throws Exception
      */
     public static void addDependency(String projectBasePath, String comment, ArtifactInfo... dependencyArtifactInfoArray) throws Exception {
@@ -74,6 +74,14 @@ public class PomUtil {
         }
     }
 
+    /**
+     * 写入依赖内容
+     *
+     * @param writer            io输出流
+     * @param comment           注释
+     * @param dependencyInfoMap 依赖列表Map
+     * @throws IOException
+     */
     private static void writeDependencyInfoMap(BufferedWriter writer, String comment, Map<String, ArtifactInfo> dependencyInfoMap) throws IOException {
         if (comment != null && !comment.isEmpty()) {
             writer.newLine();

@@ -1,13 +1,13 @@
 <idea-plugin>
-    <id>com.your.company.unique.plugin.id</id>
-    <name>Plugin display name here</name>
+    <id>JellyfishConfigPluginCover</id>
+    <name>jellyfish-config-plugin-cover</name>
     <version>1.0</version>
     <vendor email="boysijunhui@163.com" url="http://www.chushou.com">触手直播</vendor>
 
     <description>
         <![CDATA[
-      触手配置中心插件，用于快速生成数据库、RPC 等配置信息。<br>
-    ]]>
+            触手配置中心插件，用于快速生成数据库、RPC 等配置信息。<br>
+        ]]>
     </description>
 
     <change-notes>
@@ -28,15 +28,17 @@
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
         <action id="ProjectFormatAction" class="com.kascend.idea.jellyfish.config.action.ProjectFormatAction"
                 text="ProjectFormatAction">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+        <action id="DatabaseConfigGenerateAction" class="com.kascend.idea.jellyfish.config.action.DatabaseConfigGenerateAction"
+                text="DatabaseConfigGenerateAction">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
     </actions>
 
     <application-components>
-        <!-- Add your application components here -->
         <component>
             <implementation-class>com.kascend.idea.jellyfish.config.JellyfishConfigPluginRegistration</implementation-class>
         </component>
